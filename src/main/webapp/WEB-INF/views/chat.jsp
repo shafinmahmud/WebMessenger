@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>AdminLTE 2 | Dashboard</title>
+        <title>SustCHAT | WebMessenger</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <!-- Latest compiled and minified CSS -->
@@ -25,6 +25,11 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins 
              folder instead of downloading all of them to reduce the load. -->
         <link href="./resources/core/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
+
+        <!-- stomp client -->
+        <script src="./resources/core/js/sockjs-0.3.4.js"></script>
+        <script src="./resources/core/js/stomp.js"></script>
+        <script src="./resources/core/js/chat.js"></script>
 
     </head>
     <body class="skin-green">
@@ -146,6 +151,21 @@
                                     </form>
                                 </div><!-- /.box-footer-->
                             </div><!--/.direct-chat -->
+
+
+                            <div>
+                                <button id="connect" onclick="connect();">Connect</button>
+                                <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+                            </div>
+                            <div id="conversationDiv">
+                                <label>What is your name?</label><input type="text" id="name" />
+                                <button id="sendName" onclick="sendName();">Send</button>
+                                <p id="response"></p>
+                            </div>
+
+
+
+
                         </div><!-- /.col -->
                     </div><!-- /.row -->
 
