@@ -1,3 +1,5 @@
+package me.shafin.testmessenger.config;
+
 
 
 import org.springframework.context.annotation.Configuration;
