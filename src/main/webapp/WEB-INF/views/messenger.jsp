@@ -13,6 +13,7 @@
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <!-- Latest compiled and minified CSS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -27,16 +28,6 @@
         <link href="./resources/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
         <link href="./resources/css/style.css" rel="stylesheet" type="text/css" />
 
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.0.3/sockjs.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" type="text/javascript"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-
-        <script src="./resources/app/app.js" type="text/javascript"></script>
-        <script src="./resources/app/controllers.js" type="text/javascript"></script>
-        <script src="./resources/app/services.js" type="text/javascript"></script>
-    </head>
     <body class="skin-green">
         <div class="wrapper">
 
@@ -194,6 +185,14 @@
         <!-- AdminLTE for demo purposes
         <script src="dist/js/demo.js" type="text/javascript"></script> -->
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.0.3/sockjs.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
 
-    </body>
+        <script src="./resources/app/app.js" type="text/javascript"></script>
+        <script src="./resources/app/controllers.js" type="text/javascript"></script>
+        <script src="./resources/app/services.js" type="text/javascript"></script>
+    </head>
+</body>
 </html>

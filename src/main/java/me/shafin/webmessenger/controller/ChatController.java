@@ -18,13 +18,13 @@ public class ChatController {
     @RequestMapping(method = RequestMethod.GET)
     public String viewApplication() {
 //      System.out.println("this is GET point");
-        return "index";
+        return "messenger";
     }
 
     @MessageMapping("/chat")
     @SendTo("/topic/message")
     public OutputMessage sendMessage(Message message) {
-        System.out.println("okay I got messeage: " + message.toString());
+       // System.out.println("okay I got messeage: " + message.toString());
         logger.info("Message sent");
         return new OutputMessage(message, new Date());
     }
