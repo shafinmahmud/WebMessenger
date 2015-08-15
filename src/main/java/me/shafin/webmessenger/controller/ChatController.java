@@ -13,18 +13,19 @@ import me.shafin.webmessenger.dto.*;
 @RequestMapping("/")
 public class ChatController {
 
-  private Logger logger = LoggerFactory.getLogger(getClass());
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
-  @RequestMapping(method = RequestMethod.GET)
-  public String viewApplication() {
-      System.out.println("this is GET point");
-    return "messenger";
-  }
+    @RequestMapping(method = RequestMethod.GET)
+    public String viewApplication() {
+//      System.out.println("this is GET point");
+        return "index";
+    }
 
-  @MessageMapping("/chat")
-  @SendTo("/topic/message")
-  public OutputMessage sendMessage(Message message) {
-    logger.info("Message sent");
-    return new OutputMessage(message, new Date());
-  }
+    @MessageMapping("/chat")
+    @SendTo("/topic/message")
+    public OutputMessage sendMessage(Message message) {
+        System.out.println("okay I got messeage: " + message.toString());
+        logger.info("Message sent");
+        return new OutputMessage(message, new Date());
+    }
 }

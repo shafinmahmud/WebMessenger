@@ -21,60 +21,21 @@
         <!-- Ionicons -->
         <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
-        <link href="./resources/core/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
         <!-- AdminLTE Skins. Choose a skin from the css/skins 
              folder instead of downloading all of them to reduce the load. -->
-        <link href="./resources/core/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/style.css" rel="stylesheet" type="text/css" />
 
-        <!-- stomp client -->
-        <script src="./resources/core/js/sockjs-0.3.4.js"></script>
-        <script src="./resources/core/js/stomp.js"></script>
 
-        <script>
-            alert("script loaded");
-            var stompClient = null;
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.0.3/sockjs.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
 
-            function setConnected(connected) {
-                document.getElementById('connect').disabled = connected;
-                document.getElementById('disconnect').disabled = !connected;
-                document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
-                document.getElementById('response').innerHTML = '';
-            }
-
-            function connect() {
-                alert("connect called");
-                var socket = new SockJS('/hello');
-                stompClient = Stomp.over(socket);
-                stompClient.connect({}, function (frame) {
-                    setConnected(true);
-                    console.log('Connected: ' + frame);
-                    stompClient.subscribe('/topic/greetings', function (greeting) {
-                        showGreeting(JSON.parse(greeting.body).content);
-                    });
-                });
-            }
-
-            function disconnect() {
-                if (stompClient != null) {
-                    stompClient.disconnect();
-                }
-                setConnected(false);
-                console.log("Disconnected");
-            }
-
-            function sendName() {
-                var name = document.getElementById('name').value;
-                stompClient.send("/app/hello", {}, JSON.stringify({'name': name}));
-            }
-
-            function showGreeting(message) {
-                var response = document.getElementById('response');
-                var p = document.createElement('p');
-                p.style.wordWrap = 'break-word';
-                p.appendChild(document.createTextNode(message));
-                response.appendChild(p);
-            }
-        </script>
+        <script src="./resources/app/app.js" type="text/javascript"></script>
+        <script src="./resources/app/controllers.js" type="text/javascript"></script>
+        <script src="./resources/app/services.js" type="text/javascript"></script>
     </head>
     <body class="skin-green">
         <div class="wrapper">
@@ -99,7 +60,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="./resources/core/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                            <img src="./resources/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
                             <p>Shafin Mahmud</p>
@@ -164,7 +125,7 @@
                                                 <span class='direct-chat-name pull-left'>Shafin Mahmud</span>
                                                 <span class='direct-chat-timestamp pull-right'>23 Jan 2:00 pm</span>
                                             </div><!-- /.direct-chat-info -->
-                                            <img class="direct-chat-img" src="./resources/core/img/user2-160x160.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+                                            <img class="direct-chat-img" src="./resources/img/user2-160x160.jpg" alt="message user image" /><!-- /.direct-chat-img -->
                                             <div class="direct-chat-text">
                                                 Is this template really for free? That's unbelievable!
                                             </div><!-- /.direct-chat-text -->
@@ -176,7 +137,7 @@
                                                 <span class='direct-chat-name pull-right'>Sarah Bullock</span>
                                                 <span class='direct-chat-timestamp pull-left'>23 Jan 2:05 pm</span>
                                             </div><!-- /.direct-chat-info -->
-                                            <img class="direct-chat-img" src="./resources/core/img/user7-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+                                            <img class="direct-chat-img" src="./resources/img/user7-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
                                             <div class="direct-chat-text">
                                                 You better believe it!
                                             </div><!-- /.direct-chat-text -->
@@ -197,14 +158,19 @@
                             </div><!--/.direct-chat -->
 
 
-                            <div>
-                                <button id="connect" onclick="connect();">Connect</button>
-                                <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
-                            </div>
-                            <div id="conversationDiv">
-                                <label>What is your name?</label><input type="text" id="name" />
-                                <button id="sendName" onclick="sendName();">Send</button>
-                                <p id="response"></p>
+                            <div ng-controller="ChatCtrl" class="container">
+                                <form ng-submit="addMessage()" name="messageForm">
+                                    <input type="text" placeholder="Compose a new message..." ng-model="message" />
+                                    <div class="info">
+                                        <span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
+                                        <button ng-disabled="message.length > max || message.length === 0">Send</button>
+                                    </div>
+                                </form>
+                                <hr/>
+                                <p ng-repeat="message in messages| orderBy:'time':true" class="message">
+                                    <time>{{message.time| date:'HH:mm'}}</time>
+                                    <span ng-class="{self: message.self}">{{message.message}}</span>
+                                </p>
                             </div>
 
 
@@ -225,9 +191,9 @@
 
         </div><!-- ./wrapper -->
 
+        <!-- AdminLTE for demo purposes
+        <script src="dist/js/demo.js" type="text/javascript"></script> -->
 
 
-        <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js" type="text/javascript"></script>
     </body>
 </html>

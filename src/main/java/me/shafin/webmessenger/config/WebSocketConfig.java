@@ -6,7 +6,7 @@ import org.springframework.web.socket.config.annotation.*;
 
 @Configuration
 @EnableWebSocketMessageBroker
-@ComponentScan(basePackages = "me.shafin.controller")
+@ComponentScan(basePackages = "me.shafin.webmessenger.controller")
 public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
   @Override
