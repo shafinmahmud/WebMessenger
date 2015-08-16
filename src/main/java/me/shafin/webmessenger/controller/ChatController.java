@@ -14,10 +14,16 @@ import me.shafin.webmessenger.dto.*;
 public class ChatController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
-
+    
+//    @RequestMapping("/")
+//    public String viewApplication() {
+////      System.out.println("this is GET point");
+//        return "login";
+//    }
+    
     @RequestMapping(method = RequestMethod.GET)
-    public String viewApplication() {
-//      System.out.println("this is GET point");
+    public String viewMessenger() {
+     // System.out.println("this is GET point");
         return "messenger";
     }
 

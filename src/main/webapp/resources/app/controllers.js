@@ -7,6 +7,7 @@
     $scope.addMessage = function() {
       ChatService.send($scope.message);
       $scope.message = "";
+      //alert("alert");
     };
     
     ChatService.receive().then(null, null, function(message) {

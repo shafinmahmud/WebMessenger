@@ -112,16 +112,25 @@
                                     <!-- Conversations are loaded here -->
                                     <div class="direct-chat-messages">
                                         <!-- Message. Default to the left -->
-                                        <p ng-repeat="message in messages| orderBy:'time':true">
-                                            <time>{{message.time| date:'HH:mm'}}</time>
-                                            <span ng-class="{self: message.self}">{{message.message}}</span>
-                                        </p>
+                                        <div class="direct-chat-msg" ng-repeat="message in messages| orderBy:'time':true">
+                                            <div class='direct-chat-info clearfix'>
+                                                <span class='direct-chat-name pull-left'>Shafin Mahmud</span>
+                                                <span class='direct-chat-timestamp pull-right'> 
+                                                    <time>{{message.time| date:'medium'}}</time>
+                                                </span>
+                                            </div>
+                                            <img class="direct-chat-img" src="./resources/img/user2-160x160.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+                                            <div class="direct-chat-text">
+                                                <span ng-class="{self: message.self}">{{message.message}}</span>
+                                            </div><!-- /.direct-chat-text -->
+                                        </div>
+
                                         <div class="direct-chat-msg">
                                             <div class='direct-chat-info clearfix'>
                                                 <span class='direct-chat-name pull-left'>Shafin Mahmud</span>
                                                 <span class='direct-chat-timestamp pull-right'>23 Jan 2:00 pm</span>
                                             </div><!-- /.direct-chat-info -->
-                                            <img class="direct-chat-img" src="./resources/img/user2-160x160.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+                                            <img class="direct-chat-img" src="./resources/pp/2011331001_160x160.jpg" alt="message user image" /><!-- /.direct-chat-img -->
                                             <div class="direct-chat-text">
                                                 Is this template really for free? That's unbelievable!
                                             </div><!-- /.direct-chat-text -->
@@ -133,7 +142,7 @@
                                                 <span class='direct-chat-name pull-right'>Sarah Bullock</span>
                                                 <span class='direct-chat-timestamp pull-left'>23 Jan 2:05 pm</span>
                                             </div><!-- /.direct-chat-info -->
-                                            <img class="direct-chat-img" src="./resources/img/user7-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+                                            <img class="direct-chat-img" src="./resources/pp/2011331046_160x160.jpg" alt="message user image" /><!-- /.direct-chat-img -->
                                             <div class="direct-chat-text">
                                                 You better believe it!
                                             </div><!-- /.direct-chat-text -->
@@ -143,7 +152,6 @@
                                 </div><!-- /.box-body -->
                                 <div class="box-footer">
                                     <form ng-submit="addMessage()" name="messageForm">
-
                                         <input type="text" placeholder="Compose a new message..." ng-model="message" />
                                         <div class="info">
                                             <span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
