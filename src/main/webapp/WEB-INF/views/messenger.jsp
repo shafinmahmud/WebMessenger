@@ -28,7 +28,7 @@
         <link href="./resources/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
         <link href="./resources/css/style.css" rel="stylesheet" type="text/css" />
 
-    <body class="skin-green">
+    <body class="skin-green" ng-app="chatApp">
         <div class="wrapper">
 
             <header class="main-header">
@@ -95,8 +95,9 @@
                 <!-- Main content -->
                 <section class="content">
                     <div class='row'>
-                        <div class='col-md-10'>
+                        <div ng-controller="ChatCtrl" class='col-md-10'>
                             <!-- DIRECT CHAT -->
+
                             <div id="myDirectChat" class="box box-warning direct-chat direct-chat-warning">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Sarah Bullock</h3>
@@ -111,6 +112,10 @@
                                     <!-- Conversations are loaded here -->
                                     <div class="direct-chat-messages">
                                         <!-- Message. Default to the left -->
+                                        <p ng-repeat="message in messages| orderBy:'time':true">
+                                            <time>{{message.time| date:'HH:mm'}}</time>
+                                            <span ng-class="{self: message.self}">{{message.message}}</span>
+                                        </p>
                                         <div class="direct-chat-msg">
                                             <div class='direct-chat-info clearfix'>
                                                 <span class='direct-chat-name pull-left'>Shafin Mahmud</span>
@@ -137,35 +142,16 @@
 
                                 </div><!-- /.box-body -->
                                 <div class="box-footer">
-                                    <form action="#" method="post">
-                                        <div class="input-group">
-                                            <input type="text" name="message" placeholder="Type Message ..." class="form-control"/>
-                                            <span class="input-group-btn">
-                                                <button type="button" class="btn btn-warning btn-flat">Send</button>
-                                            </span>
+                                    <form ng-submit="addMessage()" name="messageForm">
+
+                                        <input type="text" placeholder="Compose a new message..." ng-model="message" />
+                                        <div class="info">
+                                            <span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
+                                            <button ng-disabled="message.length > max || message.length === 0">Send</button>
                                         </div>
                                     </form>
                                 </div><!-- /.box-footer-->
                             </div><!--/.direct-chat -->
-
-
-                            <div ng-controller="ChatCtrl" class="container">
-                                <form ng-submit="addMessage()" name="messageForm">
-                                    <input type="text" placeholder="Compose a new message..." ng-model="message" />
-                                    <div class="info">
-                                        <span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
-                                        <button ng-disabled="message.length > max || message.length === 0">Send</button>
-                                    </div>
-                                </form>
-                                <hr/>
-                                <p ng-repeat="message in messages| orderBy:'time':true" class="message">
-                                    <time>{{message.time| date:'HH:mm'}}</time>
-                                    <span ng-class="{self: message.self}">{{message.message}}</span>
-                                </p>
-                            </div>
-
-
-
 
                         </div><!-- /.col -->
                     </div><!-- /.row -->
