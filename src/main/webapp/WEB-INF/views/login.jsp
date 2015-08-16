@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>AdminLTE 2 | Log in</title>
+        <title>SustCHAT | Log in</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <!-- Latest compiled and minified CSS -->
@@ -13,7 +13,7 @@
         <!-- Font Awesome Icons -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
-        <link href="./resources/core/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
         <!-- iCheck 
         <link href="../../plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />-->
 
@@ -25,7 +25,7 @@
             </div><!-- /.login-logo -->
             <div class="login-box-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="./chat.jsp" method="post">
+                <form action="./messenger" method="post">
                     <div class="form-group has-feedback">
                         <input type="text" class="form-control" placeholder="Registration No"/>
                         <span class="glyphicon glyphicon-alert form-control-feedback"></span>
@@ -43,8 +43,7 @@
                             </div>                        
                         </div><!-- /.col -->
                         <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-block">Sign In</button>
-                           
+                            <button type="submit" class="btn btn-primary btn-block btn-block">Sign In</button>                    
                         </div><!-- /.col -->
                     </div>
                 </form>
