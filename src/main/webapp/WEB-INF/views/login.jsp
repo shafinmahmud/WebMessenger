@@ -7,6 +7,7 @@
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <!-- Latest compiled and minified CSS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -18,20 +19,20 @@
         <link href="../../plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />-->
 
     </head>
-    <body class="login-page">
+    <body class="login-page" ng-app="loginApp">
         <div class="login-box">
             <div class="login-logo">
-                <a href="../../index2.html"><b>Sust</b>Chat</a>
+                <a href="./"><b>Sust</b>Chat</a>
             </div><!-- /.login-logo -->
-            <div class="login-box-body">
+            <div class="login-box-body" ng-controller="LoginCtrl">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="./messenger" method="post">
+                <form  ng-submit="loginSubmit()" method="post">
                     <div class="form-group has-feedback">
-                        <input type="text" class="form-control" placeholder="Registration No"/>
+                        <input ng-model="form.registrationNo" required type="text" class="form-control" placeholder="Registration No"/>
                         <span class="glyphicon glyphicon-alert form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Password"/>
+                        <input ng-model="form.password" required type="password" class="form-control" placeholder="Password"/>
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row">
@@ -48,19 +49,27 @@
                     </div>
                 </form>
 
-              <!--  <div class="social-auth-links text-center">
-                    <p>- OR -</p>
-                    <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
-                    <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
-                </div><!-- /.social-auth-links -->
-              <div>
-                  <br>
-                  <a href="#">I forgot my password</a><br>
-              </div>
-                
+                <!--  <div class="social-auth-links text-center">
+                      <p>- OR -</p>
+                      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
+                      <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
+                  </div><!-- /.social-auth-links -->
+                <div>
+                    <br>
+                    <a href="#">I forgot my password</a><br>
+                </div>
+
 
             </div><!-- /.login-box-body -->
         </div><!-- /.login-box -->
-        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.0.3/sockjs.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+
+        <script src="./resources/app/loginApp.js" type="text/javascript"></script>
+        <script src="./resources/app/controllers/loginController.js" type="text/javascript"></script>
+        <script src="./resources/app/services/loginService.js" type="text/javascript"></script>
     </body>
 </html>

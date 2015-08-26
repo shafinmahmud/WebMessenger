@@ -10,18 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import me.shafin.webmessenger.dto.*;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/messenger")
 public class ChatController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
     
-//    @RequestMapping("/")
-//    public String viewApplication() {
-////      System.out.println("this is GET point");
-//        return "login";
-//    }
-    
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping("")
     public String viewMessenger() {
      // System.out.println("this is GET point");
         return "messenger";

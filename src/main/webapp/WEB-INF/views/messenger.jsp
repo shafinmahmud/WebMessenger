@@ -73,8 +73,8 @@
                     <ul class="sidebar-menu">
 
                         <!--  Online availabe list -->
-                        <li><a href="#"><i class="fa fa-circle-o text-warning"></i>Nur Uddin</a></li>      
-                        <li><a href="#"><i class="fa fa-circle-o text-warning"></i>Mizanul Hoque</a></li>
+                        <li><a href="#"><i class="fa fa-circle text-success"></i>Nur Uddin</a></li>      
+                        <li><a href="#"><i class="fa fa-circle text-success"></i>Mizanul Hoque</a></li>
                         <!--  Online availabe list -->
                     </ul>
                 </section>
@@ -119,7 +119,7 @@
                                                     <time>{{message.time| date:'medium'}}</time>
                                                 </span>
                                             </div>
-                                            <img class="direct-chat-img" src="./resources/img/user2-160x160.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+                                            <img class="direct-chat-img" src="./resources/pp/2011331001_160x160.JPG" alt="message user image" /><!-- /.direct-chat-img -->
                                             <div class="direct-chat-text">
                                                 <span ng-class="{self: message.self}">{{message.message}}</span>
                                             </div><!-- /.direct-chat-text -->
@@ -130,7 +130,7 @@
                                                 <span class='direct-chat-name pull-left'>Shafin Mahmud</span>
                                                 <span class='direct-chat-timestamp pull-right'>23 Jan 2:00 pm</span>
                                             </div><!-- /.direct-chat-info -->
-                                            <img class="direct-chat-img" src="./resources/pp/2011331001_160x160.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+                                            <img class="direct-chat-img" src="./resources/pp/2011331001_160x160.JPG" alt="message user image" /><!-- /.direct-chat-img -->
                                             <div class="direct-chat-text">
                                                 Is this template really for free? That's unbelievable!
                                             </div><!-- /.direct-chat-text -->
@@ -142,7 +142,7 @@
                                                 <span class='direct-chat-name pull-right'>Sarah Bullock</span>
                                                 <span class='direct-chat-timestamp pull-left'>23 Jan 2:05 pm</span>
                                             </div><!-- /.direct-chat-info -->
-                                            <img class="direct-chat-img" src="./resources/pp/2011331046_160x160.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+                                            <img class="direct-chat-img" src="./resources/pp/2011331046_160x160.JPG" alt="message user image" /><!-- /.direct-chat-img -->
                                             <div class="direct-chat-text">
                                                 You better believe it!
                                             </div><!-- /.direct-chat-text -->
@@ -181,12 +181,12 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.0.3/sockjs.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" type="text/javascript"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
 
-        <script src="./resources/app/app.js" type="text/javascript"></script>
-        <script src="./resources/app/controllers.js" type="text/javascript"></script>
-        <script src="./resources/app/services.js" type="text/javascript"></script>
+        <script src="./resources/app/chatApp.js" type="text/javascript"></script>
+        <script src="./resources/app/controllers/chatController.js" type="text/javascript"></script>
+        <script src="./resources/app/services/chatService.js" type="text/javascript"></script>
     </head>
 </body>
 </html>

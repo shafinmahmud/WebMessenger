@@ -5,19 +5,15 @@
     angular.module("loginApp.service").service("loginService", function ($http) {
 
         this.authLogin = function (loginData) {
-            console.log('Service accessed: ');
-            console.log(loginData);
 
             $http.post('./loginAuth', loginData)
                     .success(function (data, status, headers, config) {
-                        console.log('success I guss')
-                       
+                        console.log(data);
+                        return data;
                     })
                     .error(function (data, status, headers, config) {
-                        console.log(status + 'failed guss')
-                        
+                        console.log(data);
                     });
-            return '0';
         };
     });
 })(angular);
